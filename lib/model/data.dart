@@ -20,7 +20,6 @@ final projects = <Project>[
   Project(
       name: 'Reminder App',
       image: 'images/reminder_app.png',
-      url:
-          'https://play.google.com/store/apps/details?id=com.augustinevictor.reminder_app',
-      decs: 'A reminder app'),
+      url: 'https://github.com/austinevick/Reminder-app',
+      decs: reminderAppDesc),
 ];

@@ -1,15 +1,13 @@
 const String description =
-    'I am a flutter mobile developer with focused on clean architecture and scalability in software design and application development. Fluent in English with Excellent communication skill. I love working in an agile environment and solving problems.';
+    'I am a flutter mobile developer with focused on clean architecture and scalability in software design and application development.';
 
 const String aboutMe =
     '''I am a flutter mobile developer with over 2 years experience in software design and application development.\nI ventured into programming in 2018 while working in a vehicle tracking firm, Java was my favourite language, then I knew nothing about mobile development all I had was the passion for coding.\n\nNot until 2019 I decided to become a professional mobile engineer, I began with native android development but got so frustrated with the UI design and I began to seek for alternative. After many research I discovered flutter in a google codelab and I decided to buy the course and since then I came to love flutter not because it's perfect but it came at a point when I almost lost hope in my career.\n\nIn 2020, my passion for mobile development grew as well as my skills so I began to apply for jobs and internships I believed working with a team will help me become a better developer.\n\nGetting a job was hard not even internship, I discovered not everyone is ready to invest in you despite your zeal and potential so I forgot about getting a job and began to build personal projects, buy more online courses and develop my skill set, ventured into other technologies at a point things were tough trying to balance my present job and still find time to code and coupled with the fact that I was a part time student but that notwithstanding against all odds I knew what I wanted to become.\n\nChallenges don't break people they only make you tougher.\n\nFast forward to 2021 October, I decide to quit my job and become a full time mobile developer, I have worked remotely with different startups over the years and I learnt a lot. I created a platform where I teach young people flutter development.\nIt was a priviledge sharing my journey with you I hope you find it useful.''';
 
-const String headerText = 'Hey! I am Augustine Victor';
+const String headerText = 'I\'m Augustine Victor';
 
-const String movieAppDesc =
-    'Moviee is a flutter mobile app that displays list of movies and trailers, characters and recommended movies with third party integration, the app also include a searching feature with offline storage.';
-const String reminderAppDesc =
-    'A flutter mobile app that uses local notifications package to display notification.';
+const String movieAppDesc = 'A movie app built with flutter';
+const String reminderAppDesc = 'A reminder app with local notification';
 
 const String github = 'https://github.com/austinevick';
 const String linkedIn =
