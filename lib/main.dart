@@ -38,3 +38,38 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+class Test extends StatefulWidget {
+  const Test({Key? key}) : super(key: key);
+
+  @override
+  _TestState createState() => _TestState();
+}
+
+class _TestState extends State<Test> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView(
+        children: [
+          Container(
+            height: 200,
+            color: Colors.green,
+          ),
+          Container(
+            height: 200,
+            color: Colors.blue,
+          ),
+          Container(
+            height: 200,
+            color: Colors.brown,
+          ),
+          Container(
+            height: 200,
+            color: Colors.red,
+          ),
+        ],
+      ),
+    );
+  }
+}

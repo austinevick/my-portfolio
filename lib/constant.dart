@@ -10,6 +10,8 @@ const String movieAppDesc = 'A movie app built with flutter';
 const String reminderAppDesc = 'A reminder app with local notification';
 
 const String github = 'https://github.com/austinevick';
+const String whatsapp =
+    'https://api.whatsapp.com/send/?phone=%2B2347030020383&text&app_absent=0';
 const String linkedIn =
     'https://www.linkedin.com/in/augustine-victor-800b94172/';
 const String resumeUrl =

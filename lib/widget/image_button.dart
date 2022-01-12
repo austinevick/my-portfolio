@@ -22,7 +22,7 @@ class ImageButton extends StatelessWidget {
         child: InkWell(
           onTap: onPressed,
           child:
-              Image.asset(image!, height: 35, color: color, fit: BoxFit.cover),
+              Image.asset(image!, height: 28, color: color, fit: BoxFit.cover),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:entry/entry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:resume_builder/model/data.dart';
+import 'package:resume_builder/widget/custom_appbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'landing_page.dart';
@@ -14,7 +15,7 @@ class Projectpage extends StatefulWidget {
 }
 
 class _ProjectpageState extends State<Projectpage> {
-  final controller = PageController(viewportFraction: 0.6, initialPage: 1);
+  final controller = PageController();
 
   int currentPage = 1;
   String name = '';
@@ -30,31 +31,40 @@ class _ProjectpageState extends State<Projectpage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            return AnimatedSwitcher(
+    return (LayoutBuilder(
+      builder: (context, constraints) {
+        return SafeArea(
+          child: Scaffold(
+            appBar: PreferredSize(
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      color: const Color(0xff11162a),
+                      child: constraints.maxWidth < 850
+                          ? const SmallScreenAppBar()
+                          : const LargeScreenAppBar(),
+                    ),
+                    Container(
+                        height: 2, width: double.infinity, color: Colors.grey),
+                  ],
+                ),
+                preferredSize: const Size(100, 100)),
+            body: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 800),
                 child: constraints.maxWidth < 600
                     ? const SmallScreenListView()
-                    : largeScreenPageView());
-          },
-        ),
-      ),
-    );
+                    : largeScreenPageView()),
+          ),
+        );
+      },
+    ));
   }
 
   Widget largeScreenPageView() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: double.infinity,
-          color: const Color(0xff11162a),
-          child: const Padding(
-              padding: EdgeInsets.all(8.0), child: LargeScreenAppBar()),
-        ),
         Entry.all(
           duration: const Duration(seconds: 2),
           child: Padding(
@@ -87,6 +97,7 @@ class _ProjectpageState extends State<Projectpage> {
             ),
           ),
         ),
+        const SizedBox(height: 30),
         Expanded(
           child: PageView(
               controller: controller,
@@ -99,39 +110,28 @@ class _ProjectpageState extends State<Projectpage> {
                 });
               },
               children: List.generate(projects.length, (i) {
-                final active = i == currentPage;
-                double margin = !active ? 120 : 70;
                 return Entry.all(
                   duration: const Duration(seconds: 2),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: Bounce(
-                      duration: const Duration(milliseconds: 800),
-                      onPressed: () async {
-                        await controller.animateToPage(i,
-                            duration: const Duration(seconds: 1),
-                            curve: Curves.easeIn);
-                      },
-                      child: AnimatedContainer(
-                        margin: EdgeInsets.only(top: margin, bottom: margin),
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOutCubic,
-                        child: projects[i].shouldShow
-                            ? Container(
-                                color: Colors.black45,
-                              )
-                            : const SizedBox.shrink(),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(projects[i].image!))),
-                      ),
+                  child: Bounce(
+                    duration: const Duration(milliseconds: 800),
+                    onPressed: () {},
+                    child: Container(
+                      child: projects[i].shouldShow
+                          ? Container(
+                              width: 300,
+                              color: Colors.black45,
+                            )
+                          : const SizedBox.shrink(),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage(projects[i].image!))),
                     ),
                   ),
                 );
               })),
         ),
+        const SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -168,12 +168,6 @@ class SmallScreenListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          width: double.infinity,
-          color: const Color(0xff11162a),
-          child: const Padding(
-              padding: EdgeInsets.all(8.0), child: SmallScreenAppBar()),
-        ),
         Expanded(
           child: ListView.builder(
             itemCount: projects.length,
@@ -181,6 +175,7 @@ class SmallScreenListView extends StatelessWidget {
               duration: const Duration(seconds: 1),
               child: Column(
                 children: [
+                  const SizedBox(height: 28),
                   Text(projects[i].name!,
                       style: const TextStyle(
                           fontSize: 25, fontWeight: FontWeight.bold)),
@@ -189,24 +184,21 @@ class SmallScreenListView extends StatelessWidget {
                     projects[i].decs!,
                     style: const TextStyle(color: Colors.grey),
                   ),
+                  const SizedBox(height: 10),
                   Bounce(
                     duration: const Duration(milliseconds: 800),
                     onPressed: () async {
                       await launch(projects[i].url!);
                     },
-                    child: AnimatedContainer(
-                      height: 250, margin: EdgeInsets.all(20),
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOutCubic,
+                    child: Container(
+                      height: 300,
                       // child: projects[i].shouldShow
                       //     ? Container(
                       //         color: Colors.black45,
                       //       )
                       //     : const SizedBox.shrink(),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
                           image: DecorationImage(
-                              fit: BoxFit.cover,
                               image: AssetImage(projects[i].image!))),
                     ),
                   ),
